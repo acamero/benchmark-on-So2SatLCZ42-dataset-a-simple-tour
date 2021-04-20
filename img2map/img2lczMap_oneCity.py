@@ -27,9 +27,9 @@ import tensorflow as tf
 os.environ["CUDA_DEVICE_ORDER"]="PCI_BUS_ID"
 os.environ['TF_CPP_MIN_LOG_LEVEL']='2'
 os.environ["TF_ENABLE_AUTO_MIXED_PRECISION"] = "1"
-config = tf.ConfigProto()
+config = tf.compat.v1.ConfigProto()
 config.gpu_options.per_process_gpu_memory_fraction = 0.4
-session = tf.Session(config=config)
+session = tf.compat.v1.Session(config=config)
 
 numClass= 17
 step=10#the step for map production
@@ -48,11 +48,11 @@ params = {'dim_x': patch_shape[0],
 
 #model path
 modelFile=sys.argv[1]
-# modelFile="/home/qiu/CodeSummary/0urbanMapper/so2satLCZ42/results/_32_weights.best.hdf5"
+# modelFile="../results/_32_weights.best.hdf5"
 
 #image path
 fileD = sys.argv[2]#os.getcwd()
-# fileD = "/work/qiu/LCZ42_GEE/00017_22007_Lagos"
+# fileD = "testData/00017_22007_Lagos"
 print(fileD)
 
 MapfileD=fileD+'/LCZ_results/'; # save the results under the city folder
